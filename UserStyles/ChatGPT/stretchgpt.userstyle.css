@@ -1,0 +1,27 @@
+/* ==UserStyle==
+@name           StretchGPT: Full-width, Responsive ChatGPT
+@namespace      github.com/m1kethai/MT-UserScripts-UserStyles
+@version        1.0.0
+@description    Full-width ChatGPT messages - Conversation readability enhancement that adapts to all viewport sizes
+@author         m1kethai
+==/UserStyle== */
+
+@-moz-document url-prefix("https://chat.openai.com") {
+	@media (min-width: 768px) {
+		div.group.w-full > div:first-child.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl {
+			max-width: none !important;
+		}
+	}
+}
+
+@media (min-width: 1024px) {
+	div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
+		padding: 1rem 1.5rem;
+	}
+}
+
+@media (min-width: 1536px) {
+	div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
+		padding: 1rem 5vw;
+	}
+}
