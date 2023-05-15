@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           StretchGPT: Full-width, Responsive ChatGPT
-@namespace      github.com/m1kethai/MT-UserScripts-UserStyles
+@namespace      https://userstyles.world/style/9821/stretchgpt-full-width-responsive-chatgpt
 @version        1.0.0
 @description    Full-width ChatGPT messages - Conversation readability enhancement that adapts to all viewport sizes
 @author         m1kethai
@@ -20,6 +20,7 @@
 	}
 }
 
+/* Tailwind CSS's default "2xl" breakpoint: */
 @media (min-width: 1536px) {
 	div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
 		padding: 1rem 5vw;
