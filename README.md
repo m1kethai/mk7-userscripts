@@ -1,2 +1,2 @@
-# MT-UserScripts-UserStyles
-All of my custom UserScripts/UserStyles
+# mk7-userscripts
+a collection of custom UserScripts/UserStyles
