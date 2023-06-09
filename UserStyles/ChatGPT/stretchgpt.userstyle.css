@@ -1,32 +1,32 @@
 /* ==UserStyle==
 @name           StretchGPT: Extra-wide ChatGPT Conversations
 @namespace      https://userstyles.world/style/9821/stretchgpt-extra-wide-chatgpt-conversations
-@version        2.0.0
-@description    Enhances ChatGPT message readability by replacing the narrow fixed width with some subtle, adaptive padding for a consistent UX across all screens.
+@version        2.1.0
+@description    Enhances ChatGPT message readability by replacing the narrow fixed width with some subtle, adaptive padding for a consistent UX across all screens. 
 @author         m1kethai
 ==/UserStyle== */
 
 @-moz-document domain("chat.openai.com") {
 	@media (min-width: 768px) {
-		div.group.w-full > div:first-child.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl {
+		div.group.w-full > div:first-child.md\:max-w-2xl.xl\:max-w-3xl {
 			max-width: none !important;
 		}
 	}
 
 	@media (min-width: 1024px) {
-		div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
+		div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.md\:py-6.lg\:px-0.m-auto {
 			padding: 1rem 1.5rem;
 		}
 	}
-
+	
 	@media (min-width: 1024px) and (max-width: 1535px) {
 		div.flex.justify-between.lg\:block > div.text-gray-400.flex.self-end {
 			padding-left: 0;
-		}
+		}	
 	}
 
 	@media (min-width: 1536px) {
-		div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.lg\:max-w-xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
+		div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
 			padding: 1rem 5vw;
 		}
 	}
