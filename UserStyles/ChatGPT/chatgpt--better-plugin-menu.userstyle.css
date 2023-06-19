@@ -1,0 +1,63 @@
+/* ==UserStyle==
+@name           ChatGPT: Better Plugin Menu
+@namespace      github.com/openstyles/stylus
+@version        1.0.0
+@description    A way more readable UI for the ChatGPT plugin selection menu
+@author         m1kethai
+@preprocessor default
+@var range maxVisibleRows "Installed Plugins list: Max plugins visible in list (before scrolling)" [10, 5, 15, 5]
+==/UserStyle== */
+@-moz-document domain("chat.openai.com") {
+	.flex.max-h-60.w-full.flex-col.overflow-hidden {
+		max-height: none;
+	}
+
+	li.h-\[50px\] {
+		height: 40px !important;
+	}
+
+	ul.overflow-auto {
+		max-height: calc(40px * var(--maxVisibleRows));
+	}
+
+	@media (max-width: 500px) {
+		ul.overflow-auto {
+			max-height: calc(40px * (min(9, var(--maxVisibleRows))));
+		}
+	}
+
+	@media (min-width: 768px) {
+		div.relative.w-full.md\:w-1\/2.lg\:w-1\/3 {
+			width: 85% !important;
+		}
+		body > div:last-of-type.absolute.z-\[17\] {
+			font-size: 1.35rem;
+			font-weight: bolder;
+		}
+		body > div:last-of-type.absolute.z-\[17\] > .text-xs {
+			font-size: 1rem;
+			line-height: 1.25;
+			font-weight: 400;
+			padding-top: 0.5rem;
+		}
+	}
+
+	@media (min-width: 1024px) and (max-width: 1279px) {
+		div.relative.w-full.md\:w-1\/2.lg\:w-1\/3 {
+			width: 60% !important;
+		}
+	}
+
+	@media (min-width: 1279px) {
+		div.relative.w-full.md\:w-1\/2.lg\:w-1\/3 {
+			width: 45% !important;
+		}
+	}
+
+	@media (min-width: 1536px) {
+		div.relative.w-full.md\:w-1\/2.lg\:w-1\/3 {
+			width: 40% !important;
+			max-width: 35rem !important;
+		}
+	}
+}
