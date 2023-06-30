@@ -1,11 +1,12 @@
 /* ==UserStyle==
 @name           ChatGPT: Better Plugin Menu
-@namespace      github.com/openstyles/stylus
+@namespace      https://userstyles.world/style/10338/chatgpt-better-plugin-menu
 @version        1.0.0
 @description    A way more readable UI for the ChatGPT plugin selection menu
 @author         m1kethai
 @preprocessor default
 @var range maxVisibleRows "Installed Plugins list: Max plugins visible in list (before scrolling)" [10, 5, 15, 5]
+
 ==/UserStyle== */
 @-moz-document domain("chat.openai.com") {
 	.flex.max-h-60.w-full.flex-col.overflow-hidden {
