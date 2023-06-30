@@ -1,15 +1,57 @@
 /* ==UserStyle==
 @name           StretchGPT: Extra-wide ChatGPT Conversations
-@namespace      https://userstyles.world/style/9821/stretchgpt-extra-wide-chatgpt-conversations
-@version        2.1.0
-@description    Enhances ChatGPT message readability by replacing the narrow fixed width with some subtle, adaptive padding for a consistent UX across all screens. 
+@version        3.0
 @author         m1kethai
+@description    Enhances ChatGPT message readability by replacing the narrow fixed width with some subtle, adaptive padding for a consistent UX across all screens.
+@namespace      https://userstyles.world/style/9821/stretchgpt-extra-wide-chatgpt-conversations
+@preprocessor less
+@var checkbox wideSb "Expand Sidebar (desktop)" 1
 ==/UserStyle== */
-
 @-moz-document domain("chat.openai.com") {
 	@media (min-width: 768px) {
-		div.group.w-full > div:first-child.md\:max-w-2xl.xl\:max-w-3xl {
+		div.group.w-full > .md\:max-w-2xl.xl\:max-w-3xl {
 			max-width: none !important;
+		}
+	}
+
+	@media (min-width: 768px) {
+		/* main page content */
+		div#__next div.overflow-hidden.w-full.h-full.relative.flex.z-0 when(@wideSb = 1) {
+			/* sidebar div */
+			> div:first-child {
+				width: 14rem !important;
+				> div {
+					width: 100% !important;
+
+					/* chat link (li>a) */
+					a.flex.py-3.px-3.items-center.gap-3.relative.rounded-md {
+						padding: 0.4rem 0.4rem;
+						gap: 0.3rem;
+						/* message icon */
+						> svg {
+							display: none;
+						}
+						/* active chat buttons */
+						button.p-1 {
+							&, & > svg {
+								padding: 0.1rem;
+							}
+						}
+						/* chat title */
+						div.flex-1.text-ellipsis.max-h-5.overflow-hidden.break-all {
+							max-height: 3rem;
+							font-size: 0.75rem;
+							word-break: normal;
+							overflow: normal;
+							padding-right: 0.5rem;
+
+							> div.bg-gradient-to-l {
+								display: none;
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 
@@ -18,11 +60,11 @@
 			padding: 1rem 1.5rem;
 		}
 	}
-	
+
 	@media (min-width: 1024px) and (max-width: 1535px) {
 		div.flex.justify-between.lg\:block > div.text-gray-400.flex.self-end {
 			padding-left: 0;
-		}	
+		}
 	}
 
 	@media (min-width: 1536px) {
