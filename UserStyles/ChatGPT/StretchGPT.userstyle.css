@@ -1,11 +1,11 @@
 /* ==UserStyle==
 @name           StretchGPT: Extra-wide ChatGPT Conversations
-@version        3.0
+@version        3.2.0
 @author         m1kethai
-@description    Enhances ChatGPT message readability by replacing the narrow fixed width with some subtle, adaptive padding for a consistent UX across all screens.
+@description    Improves ChatGPT conversation readability by removing the narrow fixed content width and replacing it with subtle, adaptive padding for a consistent UX across all screen sizes. Toggleable sidebar UI enhancements also available for desktop viewports.
 @namespace      https://userstyles.world/style/9821/stretchgpt-extra-wide-chatgpt-conversations
-@preprocessor less
-@var checkbox wideSb "Expand Sidebar (desktop)" 1
+@preprocessor   less
+@var checkbox   sbTweaks   "Sidebar/Chat Selection Menu Tweaks (Desktop)"   1
 ==/UserStyle== */
 @-moz-document domain("chat.openai.com") {
 	@media (min-width: 768px) {
@@ -15,41 +15,83 @@
 	}
 
 	@media (min-width: 768px) {
-		/* main page content */
-		div#__next div.overflow-hidden.w-full.h-full.relative.flex.z-0 when(@wideSb = 1) {
-			/* sidebar div */
+
+		/* Main Content Div */
+		div#__next div.overflow-hidden.w-full.h-full.relative.flex.z-0 when(@sbTweaks = 1) {
+
+			/* Sidebar Element */
 			> div:first-child {
-				width: 14rem !important;
+				width: 15rem !important;
+
 				> div {
 					width: 100% !important;
 
-					/* chat link (li>a) */
-					a.flex.py-3.px-3.items-center.gap-3.relative.rounded-md {
-						padding: 0.4rem 0.4rem;
-						gap: 0.3rem;
-						/* message icon */
-						> svg {
-							display: none;
+					/* Nav */
+					nav[aria-label="Chat history"] {
+						&.p-2 {
+							padding: .2rem;
 						}
-						/* active chat buttons */
-						button.p-1 {
-							&, & > svg {
-								padding: 0.1rem;
-							}
-						}
-						/* chat title */
-						div.flex-1.text-ellipsis.max-h-5.overflow-hidden.break-all {
-							max-height: 3rem;
-							font-size: 0.75rem;
-							word-break: normal;
-							overflow: normal;
-							padding-right: 0.5rem;
 
-							> div.bg-gradient-to-l {
-								display: none;
+						/* Chat Timeframe Group Container (Today, Yesterday, etc.) */
+						div.sticky.top-0.z-\[14\],
+						div.sticky.top-0.z-\[16\] {
+							backdrop-filter: brightness(130%);
+							filter: brightness(130%);
+							margin-left: -0.5rem;
+							border-top: 1px inset #6b6e7f;
+						}
+
+						/* Chat Row Item */
+						a.flex.py-3.px-3.items-center.gap-3.relative.rounded-md {
+							align-items: flex-start;
+							margin: 3px 0.2rem;
+							padding: .4rem 0 .4rem .4rem;
+							gap: 0.3rem;
+							line-height: 1.5;
+							border-radius: 2px;
+
+							/* Chat Icon */
+							> svg {
+								width: 0.75rem;
+								padding-top: 0.25rem;
+							}
+
+							/* Active Chat */
+							&.bg-gray-800 {
+								> div:last-child {
+									&.absolute {
+										position: inherit;
+									}
+									/* Action Buttons */
+									button.p-1 {
+										transition: 0.2s all;
+										&:hover {
+											filter: brightness(1.5);
+											background: rgb(91 93 107 / 25%);
+											border-radius: 2px;
+										}
+										&, & > svg {
+											padding: 0.1rem;
+										}
+									}
+								}
+							}
+
+							/* Conversation Title */
+							div.flex-1.text-ellipsis.max-h-5.overflow-hidden.break-all {
+								max-height: 3rem;
+								font-size: 0.75rem;
+								word-break: normal;
+								overflow: normal;
+								padding-right: 0.5rem;
+
+								> div.bg-gradient-to-l {
+									display: none;
+								}
 							}
 						}
 					}
+
 				}
 			}
 		}
