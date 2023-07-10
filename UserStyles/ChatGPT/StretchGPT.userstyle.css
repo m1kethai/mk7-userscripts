@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           StretchGPT: Extra-wide ChatGPT Conversations
-@version        3.2
+@version        3.3
 @author         m1kethai
 @description    Improves ChatGPT conversation readability by removing the narrow fixed content width and replacing it with subtle, adaptive padding for a consistent UX across all screen sizes. Toggleable sidebar UI enhancements also available for desktop viewports.
 @namespace      https://userstyles.world/style/9821/stretchgpt-extra-wide-chatgpt-conversations
@@ -8,20 +8,25 @@
 @var checkbox   sbTweaks   "Sidebar/Chat Selection Menu Tweaks (Desktop)"   1
 ==/UserStyle== */
 @-moz-document domain("chat.openai.com") {
+
 	@media (min-width: 768px) {
-		div.group.w-full > .md\:max-w-2xl.xl\:max-w-3xl {
+		/*** CONVERSATION WINDOW ***/
+
+		/* Message - Inner Div */
+		div.flex.p-4.gap-4.md\:gap-6.md\:max-w-2xl.xl\:max-w-3xl.m-auto,
+		/* it switches to these classes when the sidebar is collapsed */
+		div.flex.p-4.gap-4.md\:gap-6.md\:max-w-3xl.m-auto {
 			max-width: none !important;
+			padding: 1.5rem 1rem !important;
 		}
-	}
 
-	@media (min-width: 768px) {
+		/*** SIDEBAR ***/
 
-		/* Main Content Div */
+		/* Main Div */
 		div#__next div.overflow-hidden.w-full.h-full.relative.flex.z-0 when(@sbTweaks = 1) {
 
 			/* Sidebar Element */
 			> div:first-child {
-
 				&:not([style*='visibility: hidden']) {
 					/* only apply when the sidebar is visible */
 					width: 15rem !important; /* default = 260px */
@@ -102,20 +107,29 @@
 	}
 
 	@media (min-width: 1024px) {
-		div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.md\:py-6.lg\:px-0.m-auto {
+		/* Message - Inner Div */
+		div.flex.p-4.gap-4.md\:gap-6.md\:max-w-2xl.xl\:max-w-3xl.m-auto,
+		div.flex.p-4.gap-4.md\:gap-6.md\:max-w-3xl.m-auto {
+			max-width: none !important;
+			padding: 0 !important;
+		}
+
+		/* Message - Outer Div */
+		div.group.w-full.border-b {
 			padding: 1rem 1.5rem;
 		}
 	}
 
-	@media (min-width: 1024px) and (max-width: 1535px) {
-		div.flex.justify-between.lg\:block > div.text-gray-400.flex.self-end {
-			padding-left: 0;
+	@media (min-width: 1536px) {
+		div.group.w-full.border-b {
+			padding: 1rem 5vw;
 		}
 	}
 
-	@media (min-width: 1536px) {
-		div.flex.p-4.gap-4.text-base.md\:gap-6.md\:max-w-2xl.xl\:max-w-3xl.md\:py-6.lg\:px-0.m-auto {
-			padding: 1rem 5vw;
+	@media (min-width: 1024px) and (max-width: 1535px) {
+		/* Message - Action Btn Container */
+		div.flex.justify-between.lg\:block > div.text-gray-400.flex.self-end {
+			padding-left: 0;
 		}
 	}
 }
