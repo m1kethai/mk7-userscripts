@@ -1,6 +1,6 @@
 /* ==UserStyle==
 @name           StretchGPT: Extra-wide ChatGPT Conversations
-@version        3.2.0
+@version        3.2
 @author         m1kethai
 @description    Improves ChatGPT conversation readability by removing the narrow fixed content width and replacing it with subtle, adaptive padding for a consistent UX across all screen sizes. Toggleable sidebar UI enhancements also available for desktop viewports.
 @namespace      https://userstyles.world/style/9821/stretchgpt-extra-wide-chatgpt-conversations
@@ -21,7 +21,11 @@
 
 			/* Sidebar Element */
 			> div:first-child {
-				width: 15rem !important;
+
+				&:not([style*='visibility: hidden']) {
+					/* only apply when the sidebar is visible */
+					width: 15rem !important; /* default = 260px */
+				}
 
 				> div {
 					width: 100% !important;
